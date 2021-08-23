@@ -1,5 +1,5 @@
 # Notes
-Testing and development was done on Debian 11 (no GUI).  The `ansible_user` should be able to sudo on the machine running the code.  This code should work on Ubuntu/RHEL/CentOS but it wasn't tested with those environments.  This code also assumes that the software listed below is installed on the host running the code.  Versions used can be found below as well.
+Testing and development was done on Debian 11 (no GUI).  The `ansible_user` should be able to sudo on the machine running the code.  This code should work on Ubuntu/RHEL/CentOS but it wasn't tested with those environments.  This code also assumes that the software listed below ('Tools Installed via OS Package Manager') is installed on the host running the code.  Versions used can be found below as well.
 
 # Tools Installed via OS Package Manager
 * ansible v2.10.8
