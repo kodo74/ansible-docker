@@ -1,0 +1,14 @@
+---
+
+- name: Get Nginx web content
+  uri:
+    url: http://127.0.0.1:8080/
+  register: web_check
+  retries: 5
+  delay: 5
+  until: web_check.status == 200
+
+- debug:
+    msg: The Nginx server is up and running!
+  when:
+    - web_check.status == 200

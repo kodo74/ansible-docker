@@ -1,0 +1,28 @@
+---
+
+- name: Get all Docker containers
+  shell: |
+    docker ps -a
+  register: docker_containers
+
+- name: Stop and remove running Nginx container
+  shell: |
+    docker stop nginx
+    docker rm nginx
+  when:
+    - '"nginx" in docker_containers.stdout'
+
+- name: Stop and remove running PostgreSQL container
+  shell: |
+    docker stop postgres
+    docker rm postgres
+  when:
+    - '"postgres" in docker_containers.stdout'
+
+- name: Deploy Nginx via Docker
+  shell: |
+    docker run -d -p 8080:80 --restart=always --name=nginx {{ nginx_image }}
+
+- name: Deploy PostgreSQL via Docker
+  shell: |
+    docker run -d -p 5432:5432 --env POSTGRES_PASSWORD={{ postgres_password }} --restart=always --name=postgres {{ postgres_image }}

@@ -1,0 +1,7 @@
+---
+
+- name: Perform web server check
+  include: web-check.yml
+
+- name: Perform DB check
+  include: db-check.yml

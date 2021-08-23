@@ -1,0 +1,5 @@
+---
+
+ansible_user: ""
+nginx_image: "nginx:1.21.1"
+postgres_image: "postgres:9.6.23-buster"

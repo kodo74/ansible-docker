@@ -1,0 +1,28 @@
+---
+
+- name: Install pip3
+  package:
+    name: python3-pip
+    state: present
+  become: true
+
+- name: Install psycopg2-binary via pip3
+  pip:
+    name: psycopg2-binary
+    state: present
+
+- name: Check PostgreSQL server is ready
+  postgresql_ping:
+    login_host: 127.0.0.1
+    port: 5432
+    login_user: postgres
+    login_password: "{{ postgres_password }}"
+  register: db_check
+  retries: 5
+  delay: 5
+  until: db_check.is_available == true
+
+- debug:
+    msg: The PostgreSQL server is up and running!
+  when:
+    - db_check.is_available == true

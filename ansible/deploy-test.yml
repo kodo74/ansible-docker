@@ -1,0 +1,7 @@
+---
+
+- name: Deploy and test Nginx and PostgreSQL
+  hosts: localhost
+  roles:
+    - deploy
+    - test
